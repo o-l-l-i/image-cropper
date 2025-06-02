@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cropper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="spinnerOverlay" class="spinner-overlay hidden">
+        <div id="spinner" class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Image Cropper</h1>
+            <p>Upload an image and drag to select the area you want to crop.</p>
+            <p>Click crop, preview the results and then download.</p>
+            <p><b>The whole process runs in your browser and is not uploaded anywhere.</b></p>
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">Drop your image here or click to browse</div>
+            <button class="upload-btn" id="openFileBtn">
+                Choose Image
+            </button>
+            <input type="file" id="fileInput" class="file-input" accept="image/png, image/jpeg, image/webp, image/gif, image/avif">
+        </div>
+
+        <div class="image-container hidden" id="imageContainer">
+            <div class="image-wrapper">
+                <img id="previewImage" class="preview-image" alt="Preview">
+                <div class="crop-overlay" id="cropOverlay">
+                    <div id="topMask" class="mask"></div>
+                    <div id="bottomMask" class="mask"></div>
+                    <div id="leftMask" class="mask"></div>
+                    <div id="rightMask" class="mask"></div>
+                    <div class="crop-selection" id="cropSelection">
+                        <div class="resize-handle nw"></div>
+                        <div class="resize-handle ne"></div>
+                        <div class="resize-handle sw"></div>
+                        <div class="resize-handle se"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="crop-controls">
+            <label>
+                <input type="checkbox" id="aspectRatioToggle" disabled>
+                Lock Aspect Ratio (Square)
+            </label>
+
+            <div id="actual-size-panel" style="margin-top: 10px;">
+            <h4>Crop Size (source resolution, px):</h4>
+
+            <span class="line">
+                <span class="line">
+                    <label>
+                        X: <input type="number" id="actualX" min="0" disabled>
+                    </label>
+                </span>
+                <span class="line">
+                    <label>
+                        Y: <input type="number" id="actualY" min="0" disabled>
+                    </label>
+                </span>
+            </span>
+
+            <span class="line">
+                <span class="line">
+                    <label>
+                        W: <input type="number" id="actualWidth" min="1" disabled>
+                    </label>
+                </span>
+                <span class="line">
+                    <label>
+                        H: <input type="number" id="actualHeight" min="1" disabled>
+                    </label>
+                </span>
+            </span>
+
+        </div>
+
+        <div class="controls hidden" id="controls">
+            <button class="crop-btn" id="cropBtn" disabled>Crop Image</button>
+            <button class="reset-btn" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="result-container hidden" id="resultContainer">
+            <h3 style="margin-bottom: 20px; color: #333;">Cropped Result</h3>
+            <img id="croppedImage" class="cropped-image" alt="Cropped">
+            <br>
+            <button class="download-btn" id="downloadBtn">Download</button>
+        </div>
+
+        <div class="footer">
+            <span class="line">Created by </span>
+             <span class="line"><a href="https://github.com/o-l-l-i">o-l-l-i</a></span>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+
+</html>
