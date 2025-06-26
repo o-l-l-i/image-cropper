@@ -131,6 +131,8 @@ body {
     cursor: crosshair;
     overflow: visible;
     z-index: 10;
+    touch-action: none;
+    -ms-touch-action: none;
 }
 
 .crop-selection {
@@ -164,9 +166,20 @@ body {
     background: #667eea;
     border: 2px solid white;
     border-radius: 50%;
+    z-index: 20;
+    pointer-events: auto;
+    touch-action: none;
+    box-sizing: border-box;
+}
 
-    user-select: none;
-    -webkit-user-drag: none;
+.resize-handle::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
 }
 
 .resize-handle.nw {

@@ -91,6 +91,7 @@ export function createCropController({
     function onMouseDownStartCrop(e) {
 
         e.preventDefault();
+        DOM.cropOverlay.setPointerCapture(e.pointerId);
 
         recalculateScaleAndOverlay();
 
@@ -121,8 +122,10 @@ export function createCropController({
         }
     }
 
-    function onMouseUpEndCrop() {
+    function onMouseUpEndCrop(e) {
         if (!isDraggingRef.current && !isResizingRef.current) return;
+
+        DOM.cropOverlay.releasePointerCapture(e.pointerId);
 
         DOM.cropBtn.disabled = false;
         isDraggingRef.current = false;

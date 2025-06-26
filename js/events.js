@@ -60,6 +60,10 @@ export function initInputEvents({
     document.addEventListener('mousemove', onMouseMoveUpdateCrop);
     document.addEventListener('mouseup', onMouseUpEndCrop);
 
+    DOM.cropOverlay.addEventListener('pointerdown', onMouseDownStartCrop);
+    document.addEventListener('pointermove', onMouseMoveUpdateCrop);
+    document.addEventListener('pointerup', onMouseUpEndCrop);
+
     [DOM.inputX, DOM.inputY, DOM.inputWidth, DOM.inputHeight].forEach(input => {
         input.addEventListener('change', validateAndApplyInputCrop);
     });
